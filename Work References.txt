@@ -1,5 +1,0 @@
-1.Session using Express :
-
-https://codeforgeek.com/2014/09/manage-session-using-node-js-express-4/
-
-https://blog.nraboy.com/2015/01/session-management-expressjs-web-application/
