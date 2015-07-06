@@ -1,3 +1,5 @@
+Prerequisites : Installation of Node.js and MySQL
+
 Project Type : Web Application
 
 Programming Language : Major - Node.js
