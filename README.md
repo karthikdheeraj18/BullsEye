@@ -45,6 +45,11 @@ Compilation Tool :
 			npm
 
 
+Automation Tool :
+
+			nodemon
+
+
 Web Development Languages : 
 
 			HTML,Javascript,JQuery,CSS
