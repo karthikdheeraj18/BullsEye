@@ -30,7 +30,7 @@ Database.login = function(loginDetails, done) {
     "' && password='" +
     loginDetails.pw +
     "'";
-  connection.query(query, function(err, rows, fields) {
+  connection.query(query, function(err, rows) {
     if (err) throw err;
     connection.end();
 
@@ -50,7 +50,7 @@ Database.register = function(regDetails, done) {
   connection.query(
     "select * from users where username=?",
     [regDetails.un],
-    function(err, rows, fields) {
+    function(err, rows) {
       if (err) throw err;
 
       //if not exists enter details into database
@@ -81,7 +81,7 @@ Database.questionsFromDB = function(category, done) {
   connection.query(
     "select question,option1,option2,option3,option4 from questions where category=? ORDER BY RAND() LIMIT 10",
     [category],
-    function(err, rows, fields) {
+    function(err, rows) {
       if (err) throw err;
       connection.end();
       //console.log(rows);
@@ -98,7 +98,7 @@ Database.scoreupdate = function(scoreSet) {
   connection.query(
     "select fname,score from userscores where fname=?",
     [scoreSet[0]],
-    function(err, rows, fields) {
+    function(err, rows) {
       if (err) throw err;
       //console.log(scoreSet[1]);
       if (rows[0] && rows[0].score < scoreSet[1]) {
@@ -128,7 +128,7 @@ Database.getScores = function(done) {
   var connection = this.configure();
   connection.query(
     "SELECT fname,score from userscores order by score desc",
-    function(err, rows, fields) {
+    function(err, rows) {
       if (err) throw err;
       connection.end();
 
