@@ -1,22 +1,22 @@
-$(function() {
-  //$(document).ready(function() {
-  var questionNumber = 0;
-  var questionBank = [];
-  var stage = "#game1";
-  var stage2 = {};
-  //var questionLock = false;
-  var numberOfQuestions;
-  var score = 0;
+$(document).ready(function() {
+  let questionNumber = 0;
+  let questionBank = new Array();
+  let stage = "#game1";
+  let stage2 = new Object();
+  //let questionLock = false;
+  let numberOfQuestions;
+  let score = 0;
 
-  var optionid = null;
-  var answertext;
+  let optionid = null;
+  let answertext;
 
   //Review code
-  var scorehold = [];
+  let scorehold = new Array();
   //
 
-  var start = new Date();
-  var end = (new Date() - start + 300000) / 1000 / 60; //5 minutes(300 sec) for 15 questions
+  let start = new Date();
+  //let timehold;
+  let end = (new Date() - start + 300000) / 1000 / 60; //5 minutes(300 sec) for 15 questions
   setInterval(
     function() {
       //	$('#timer').css({'color': '#FFF','font-size': '50%'});
@@ -85,8 +85,8 @@ $(function() {
     "/jsonset",
     function(data) {
       console.log(data);
-      for (var i = 0; i < data.quizlist.length; i++) {
-        questionBank[i] = [];
+      for (let i = 0; i < data.quizlist.length; i++) {
+        questionBank[i] = new Array();
         questionBank[i][0] = data.quizlist[i].question;
         questionBank[i][1] = data.quizlist[i].option1;
         questionBank[i][2] = data.quizlist[i].option2;
@@ -100,12 +100,12 @@ $(function() {
   );
 
   function displayQuestion() {
-    var rnd = Math.random() * 4;
+    let rnd = Math.random() * 4;
     rnd = Math.ceil(rnd);
-    var q1;
-    var q2;
-    var q3;
-    var q4;
+    let q1;
+    let q2;
+    let q3;
+    let q4;
 
     if (rnd == 1) {
       q1 = questionBank[questionNumber][1];
@@ -243,7 +243,7 @@ $(function() {
     //alert(' '+numberOfQuestions+' '+score)
 
     //save data for reviewing in questionReview.jsp page
-    var serializedArr = JSON.stringify(scorehold); //serializing text into variable for review
+    let serializedArr = JSON.stringify(scorehold); //serializing text into variable for review
     localStorage.setItem("_review", serializedArr);
     //save data end
 
