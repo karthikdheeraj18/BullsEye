@@ -1,3 +1,3 @@
-$('#toggle-login').click(function(){
-  $('#login').toggle();
+$("#toggle-login").click(function() {
+  $("#login").toggle();
 });
