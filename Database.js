@@ -1,9 +1,9 @@
-var mysql = require("mysql");
-var Database = {};
+let mysql = require("mysql");
+let Database = {};
 
 Database.configure = function() {
   //Database Configuration
-  var connection = mysql.createConnection(
+  let connection = mysql.createConnection(
     {
       host: "localhost",
       user: "root",
@@ -22,10 +22,10 @@ Database.configure = function() {
 
 Database.login = function(loginDetails, done) {
   //Calling Configuration
-  var connection = this.configure();
+  let connection = this.configure();
 
   //Retrieving login details from database
-  var query = "select * from users where username='" +
+  let query = "select * from users where username='" +
     loginDetails.un +
     "' && password='" +
     loginDetails.pw +
@@ -45,7 +45,7 @@ Database.login = function(loginDetails, done) {
 
 Database.register = function(regDetails, done) {
   //Calling Configuration
-  var connection = this.configure();
+  let connection = this.configure();
   //checks if user with username already exists
   connection.query(
     "select * from users where username=?",
@@ -57,7 +57,7 @@ Database.register = function(regDetails, done) {
       if (!rows[0]) {
         //Entering Details into Database
         console.log(!rows[0]);
-        var query = "insert into users (firstname,lastname,username,password) values(?,?,?,?)";
+        let query = "insert into users (firstname,lastname,username,password) values(?,?,?,?)";
         connection.query(
           query,
           [regDetails.first, regDetails.last, regDetails.un, regDetails.pw],
@@ -76,7 +76,7 @@ Database.register = function(regDetails, done) {
 
 Database.questionsFromDB = function(category, done) {
   //Calling Configuration
-  var connection = this.configure();
+  let connection = this.configure();
   category = category.toLowerCase();
   connection.query(
     "select question,option1,option2,option3,option4 from questions where category=? ORDER BY RAND() LIMIT 10",
@@ -85,7 +85,7 @@ Database.questionsFromDB = function(category, done) {
       if (err) throw err;
       connection.end();
       //console.log(rows);
-      var qaSet = { quizlist: rows };
+      let qaSet = { quizlist: rows };
       //console.log(set);
       done(qaSet);
     }
@@ -94,7 +94,7 @@ Database.questionsFromDB = function(category, done) {
 
 Database.scoreupdate = function(scoreSet) {
   //Calling Configuration
-  var connection = this.configure();
+  let connection = this.configure();
   connection.query(
     "select fname,score from userscores where fname=?",
     [scoreSet[0]],
@@ -125,7 +125,7 @@ Database.scoreupdate = function(scoreSet) {
 
 Database.getScores = function(done) {
   //Calling Configuration
-  var connection = this.configure();
+  let connection = this.configure();
   connection.query(
     "SELECT fname,score from userscores order by score desc",
     function(err, rows) {
