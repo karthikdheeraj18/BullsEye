@@ -3,9 +3,11 @@
 "env": {
   "node": true,
   "jquery": true,
-  "browser": true
+  "browser": true,
+  "es6": true
 },
 "rules": {
-  "no-console": 0
+  "no-console": 0,
+  "no-var": 2
 }
 }
