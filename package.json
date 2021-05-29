@@ -13,7 +13,7 @@
     "express": "~4.16.0",
     "express-session": "^1.15.6",
     "jade": "~1.9.2",
-    "morgan": "~1.9.1",
+    "morgan": "~1.10.0",
     "mysql": "^2.14.0",
     "serve-favicon": "~2.4.5",
     "swig": "^1.4.2"
